@@ -54,7 +54,7 @@ export default function Ordars() {
    <div className='w-[85%] mx-auto'>
 
    <header className='mt-7'>
-    <h1 className='font-bold text-2xl mb-4'></h1>
+    <h1 className='font-bold text-2xl mb-4'>My Ordars</h1>
     <p className='text-gray-500 mb-4'>Track and manage your order histort</p>
    </header>
 

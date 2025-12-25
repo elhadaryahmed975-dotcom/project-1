@@ -59,9 +59,7 @@ export default function Ordars() {
    </header>
 
 
- <p>Please</p> 
- <p>l Toled you please</p>
-
+ 
 <div className='border p-10 rounded-xl shadow-md mb-3'>
    <div className='flex items-center justify-between'>
     

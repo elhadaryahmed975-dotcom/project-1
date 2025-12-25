@@ -58,7 +58,7 @@ export default function Ordars() {
     <p className='text-gray-500 mb-4'>Track and manage your order histort</p>
    </header>
    
-<p>CAR CAR </p>
+
 
 <div className='border p-10 rounded-xl shadow-md mb-3'>
    <div className='flex items-center justify-between'>

@@ -62,14 +62,50 @@ export default function Cart() {
     });
 }
 
+ function StarRating({rating})
+ {
+   return (
+     <div className='flex items-center gap-2'>
+      {[1,2,3,4,5]?.map((star)=>(
+
+      <i key={star}
+         className= {`fa-solid fa-star 
+          
+          ${rating >= star ? "text-yellow-600" : "text-gray-400"}
+          `} ></i>
+      ))
+      }
+      <span className='text-gray-600 text-sm'>{rating}</span>
+     </div>
+   )
+ }
+ 
+ function StarRating({rating})
+ {
+   return (
+     <div className='flex items-center gap-2'>
+      {[1,2,3,4,5]?.map((star)=>(
+
+      <i key={star}
+         className= {`fa-solid fa-star 
+          
+          ${rating >= star ? "text-yellow-600" : "text-gray-400"}
+          `} ></i>
+      ))
+      }
+      <span className='text-gray-600 text-sm'>{rating}</span>
+     </div>
+   )
+ }
+
   return (
   <>
   {product?.length != 0 ?  <section>
     
     <div>
     <header className='mt-14 flex items-center justify-between w-[85%] mx-auto '>
-    <h2 className='font-bold text-2xl'>Shopping Cart</h2>
-    <button onClick={RemoveAllCarts} className='text-red-700 text-xl font-bold hover:bg-black'>Clear Cart</button>
+    <h2 className='font-bold text-xl md:text-2xl '>Shopping Cart</h2>
+    <button onClick={RemoveAllCarts} className='text-red-700 text-xl md:text-2xl font-bold hover:text-black rounded-2xl duration-200'>Clear All Carts</button>
     </header>
     </div>
 
@@ -82,7 +118,7 @@ export default function Cart() {
 
   <div className='border border-gray-300 p-5 px-40 shadow-md rounded-xl'>
      {/* الصورة */}
-  <div className="w-[200px] h-[100px] ">
+  <div className="w-full max-w-[200px] aspect-square h-[100px] ">
     <img
       src={item?.product?.imageCover}
       className="w-full h-full object-contain rounded-xl"
@@ -99,20 +135,17 @@ export default function Cart() {
        {item?.product?.category?.name}
       </h2> 
 
-      <div className="flex mt-1">
-      <i className="fa-solid fa-star text-yellow-400"></i>
-      <i className="fa-solid fa-star text-yellow-400"></i>
-      <i className="fa-solid fa-star text-yellow-400"></i>
-      <i className="fa-solid fa-star text-yellow-400"></i>
-      <i className="fa-solid fa-star text-yellow-400"></i>
-    </div>
+        <div className="flex items-center gap-2 mt-2">
 
-    <div className='flex'>
-      <span>({item?.product?.ratingsAverage})</span>
-    </div>
+         <div className="flex gap-5">
+          <StarRating rating = {item?.product?.ratingsAverage}/>
+          </div>
+            {/* <p className="text-sm text-gray-500 flex">({item.sold})</p> */}
+        </div>
+        
 
     </div>
-
+      
     
     {/* العداد + السعر + الحذف */}
     <div className="flex items-center gap-10 mt-7">
@@ -147,7 +180,7 @@ export default function Cart() {
    
       {/*second section  */}
      <div className='mt-14 max-xl:w-full flex-1'>
-      <div className='border border-gray-300 p-5 rounded-md shadow-md'>
+      <div className='border border-gray-300 p-5 px-3 md:px-10 lg:px-20 rounded-md shadow-md'>
         <div className='my-2'>
         <h2 className='font-semibold text-2xl'>Order Summary</h2>
        </div>

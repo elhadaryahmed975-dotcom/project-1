@@ -41,6 +41,7 @@ export function App() {
    {path:"allorders",element:<ProtectedRoute><Ordars></Ordars></ProtectedRoute>},  
    {path:"cart",element:<ProtectedRoute><Cart></Cart></ProtectedRoute> }, 
    {path:"FeatcharedProducts",element:<ProtectedRoute><FeatcharedProducts></FeatcharedProducts></ProtectedRoute>},  
+   {path:"/products/:category",element:<ProtectedRoute><FeatcharedProducts></FeatcharedProducts></ProtectedRoute>},
    {path:"whishlist",element:<ProtectedRoute><Whishlist></Whishlist></ProtectedRoute> },  
    {path:"CheckOut/:cartid",element:<ProtectedRoute><CheckOut></CheckOut></ProtectedRoute> },
    {path:"*",element:<NotFound></NotFound>}

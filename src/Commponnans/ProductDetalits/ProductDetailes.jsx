@@ -32,10 +32,6 @@ export default function ProductDetailes() {
   })
  }
 
-
-
-
-
  function AddToCart(ID)
  {
   setselacteddproduct(ID);
@@ -66,6 +62,11 @@ export default function ProductDetailes() {
      let allproducts = data.data;
      let feiltared = allproducts.filter((iteam)=>iteam?.category?.name == product?.category?.name);
      setrelatedproduct(feiltared);
+      // فلتره المنتج 
+     let fill = feiltared.filter((iteam)=> iteam?._id !== product?._id);
+      // فلتره المنتج 
+     setrelatedproduct(fill);
+
      console.log(allproducts,"allproducts");
      console.log(feiltared,"feiltared");
     }).catch((err)=>{
@@ -105,7 +106,7 @@ export default function ProductDetailes() {
  
   return (
   <>
- <section className="w-[85%] mx-auto mt-14">
+ <section className="max-w-screen-lg mx-auto mt-14">
 
   <div className='hover:text-blue-700 duration-300'>
    <Link to= {"/FeatcharedProducts"}>
@@ -116,12 +117,12 @@ export default function ProductDetailes() {
   <div className="flex flex-col md:flex-row gap-8 items-start">
 
     {/* الصورة */}
-    <div className="w-[300px] h-[300px] flex-shrink-0">
+    <div className="w-full md:w-[300px]  md:h-[300px] mx-auto aspect-[4/3] flex-shrink-0">
 
        <img
         src={product?.imageCover}
         alt={product?.title}
-        className="w-full h-full object-contain rounded-lg"
+        className=" object-contain rounded-lg"
       />
    
     </div>
@@ -170,6 +171,9 @@ export default function ProductDetailes() {
      <div className="flex items-center gap-4 mt-6">
 
     {/* العداد */}
+  <div>
+    
+  </div>
  <div className="flex items-center border rounded-lg overflow-hidden">
   <button
     onClick={() => count > 1 && setCount(count - 1)}
@@ -209,7 +213,7 @@ export default function ProductDetailes() {
 
     </div>
     {/* last section */}
-      <div className='flex text-center gap-11 mt-5'>
+      <div className='flex flex-col sm:flex-row flex-wrap justify-center gap-4 mt-3 text-center'>
 
        <div className='flex gap-5'>
      <i className="fa-solid fa-truck text-blue-500 hover:text-black duration-300"></i>
@@ -233,7 +237,7 @@ export default function ProductDetailes() {
    {/* Realated Products */}
     <div className='w-[85%] mx-auto mt-20'>
      <header>
-      <span className='font-bold text-2xl hover:text-red-950'>Related Product</span>
+      <span className='font-bold text-xl sm:text-2xl xl:text-3xl hover:text-red-950'>Related Product</span>
      </header>
     </div>
      {/*  */}
@@ -242,14 +246,14 @@ export default function ProductDetailes() {
       
       
           {relatedproduct?.map((iteam)=>
-            <div key={iteam?._id} className="w-[250px] bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+            <div key={iteam?._id} className="w-full max-w-sm bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
       
             <Link to={`/productDetalies/${iteam?._id}`}>
             
                <div className='border rounded-lg'>
       
               <div className="relative">
-              <img src={iteam?.imageCover} alt={iteam?.title} className="w-full h-[200px] object-cover" />
+              <img src={iteam?.imageCover} alt={iteam?.title} className="w-full h-[200px] aspect-[4/3] object-contain" />
               <button /////////Make Like Not button
                   onClick={(e)=>{e.preventDefault();
                                  e.stopPropagation();

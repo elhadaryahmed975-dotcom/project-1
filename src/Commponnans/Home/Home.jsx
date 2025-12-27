@@ -23,7 +23,8 @@ export default function Home() {
       </p>
 
       <p className="mb-6 text-white/90 text-sm md:text-base">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+       Shop the latest trends with unbeatable prices and exceptional<br/>
+       quality.Your perfect shopping experience starts here.
       </p>
 
       <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
@@ -34,9 +35,9 @@ export default function Home() {
           Shop Now
         </Link>
 
-        <button className="text-white border rounded-lg py-2 px-6 bg-orange-700 hover:bg-black duration-200">
+        <Link to="/products/electronics" className="text-white border rounded-lg py-2 px-6 bg-orange-700 hover:bg-black duration-200">
           View Electronics
-        </button>
+        </Link>
       </div>
     </div>
 
@@ -66,7 +67,7 @@ export default function Home() {
     <h1 className="font-bold text-2xl md:text-3xl">
       Why Choose Shopifya?
     </h1>
-    <p className="text-gray-600 text-sm md:text-base">
+    <p className="text-gray-600 text-sm md:text-base mt-3">
       We are committed to providing you with the best shopping experience
     </p>
   </div>

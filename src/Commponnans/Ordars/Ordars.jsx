@@ -7,8 +7,7 @@ import { Link } from 'react-router-dom';
 export default function Ordars() {
 
  const[lastorders,setlastorders] = useState({});
- const [delate,setdelate] = useState({});
-
+ 
  const token = localStorage.getItem("userToken");
  const {id} = jwtDecode(token)
  console.log(id);
@@ -51,20 +50,17 @@ export default function Ordars() {
 
   return (
   <>
-  <section>
+  <section >
    <div className='w-[85%] mx-auto'>
 
    <header className='mt-7'>
-    <h1 className='font-bold text-2xl mb-4'>My Ordars</h1>
+    <h1 className='font-bold text-xl md:text-2xl lg:text-3xl mb-4'>My Ordars</h1>
     <p className='text-gray-500 mb-4'>Track and manage your order histort</p>
    </header>
 
-<p>ll</p>
 
-
-
-<div className='border p-10 rounded-xl shadow-md mb-3'>
-   <div className='flex items-center justify-between'>
+<div className='border p-4 md:p-10 xl:p-12 rounded-xl shadow-md mb-3'>
+   <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-2'>
     
     {/* العنوان */}
     <h2 className='text-xl font-semibold'>
@@ -72,7 +68,7 @@ export default function Ordars() {
     </h2>
 
     {/* السعر و عدد المنتجات */}
-    <div className='flex items-center gap-2 pr-2'>
+    <div className='flex flex-col md:flex-row xl:flex-row 2xl:flex-row items-center gap-2 pr-2'>
       <span className='font-semibold'>${lastorders.totalOrderPrice}</span>
       <span className='text-gray-500'>({lastorders?.cartItems?.length} iteams )</span>
 
@@ -83,14 +79,14 @@ export default function Ordars() {
     <>
      <div className='border-b text-gray-500 mt-10'></div>
     
-   <div key={item?._id} className='w-full mt-3 flex items-center gap-6 border p-4 rounded-lg'>
+   <div key={item?._id} className='w-full mt-3 flex flex-col md:flex-row items-start md:items-center gap-4 border p-4 rounded-lg'>
   
     {/* الصورة */}
     <div className='flex-shrink-0'>
      <img
       src={item.product.imageCover}
 
-      className='w-[100px] rounded-2xl object-contain'
+      className='w-[80px] md:w-[100px] rounded-2xl object-contain'
       alt={item.product.title}
 
       />
@@ -118,25 +114,17 @@ export default function Ordars() {
     </div>
 
     {/* السعر + Remove */}
-   <div className='flex items-center gap-4 ml-auto'>
+   <div className='flex items-center gap-4 md:ml-auto'>
      <span className='font-semibold text-lg'>
       $ {item.count * item.price}
 
      </span>
 
-    <button
-      className='text-red-500 text-sm hover:text-black'
-      onClick={() => removeItem(item.product.id)}
 
-    >
-      Remove
-    </button>
    </div>
 
   </div>
     </>
-   
-  
   )}
    
    
@@ -146,20 +134,12 @@ export default function Ordars() {
    {/* Images */}
 </div>
 
-  
-
       <div className='mt-7 flex justify-center items-center'>
          <Link to={"/FeatcharedProducts"} className='bg-blue-600 text-white py-2 px-4 hover:bg-black duration-200 rounded-2xl'>Continue Shopping</Link>
       </div>
-
    </div>
   
-
-
-    
   </section>
- 
-
   </>
   )
 }

@@ -6,6 +6,8 @@ import axios from 'axios';
 export default function CheckOut() {
 
  let {cartid} = useParams();
+ console.log(cartid);
+ 
  const [paymentmethod,setpaymentmethod] = useState("cath");
 
  let Formik = useFormik({
@@ -35,9 +37,8 @@ export default function CheckOut() {
    console.log(err);
   })
    }
-  else
+  else if (paymentmethod == "Online")   
   {
-   (paymentmethod == "Online")   
    {
      axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartid}?url=http://localhost:5173`,values,{
       headers:{
@@ -53,12 +54,8 @@ export default function CheckOut() {
      })
    }
   }
-
-
-
-
-
  }
+
   return (
     <>
    <section>
@@ -91,12 +88,12 @@ export default function CheckOut() {
 
       <div>
         <label htmlFor="IDCity">City</label>
-        <input onChange={Formik.handleChange} name="city" type="text" id="IDCity" className="w-full border rounded-md p-2" />
+        <input onChange={Formik.handleChange} value={Formik.values.shippingAddress.city} name="shippingAddress.city" type="text" id="IDCity" className="w-full border rounded-md p-2" />
       </div>
 
       <div>
         <label htmlFor="IDnumber">Phone Number</label>
-        <input onChange={Formik.handleChange} name="phone" type="number" id="IDnumber" className="w-full border rounded-md p-2" />
+        <input onChange={Formik.handleChange} value={Formik.values.shippingAddress.phone} name="shippingAddress.phone" type="number" id="IDnumber" className="w-full border rounded-md p-2" />
       </div>
 
       <div>
@@ -106,7 +103,7 @@ export default function CheckOut() {
 
       <div>
         <label htmlFor="IDDetails">Details</label>
-        <textarea onChange={Formik.handleChange} name="details" type="text" id="IDDetails" className="w-full border rounded-md p-2" />
+        <textarea onChange={Formik.handleChange} value={Formik.values.shippingAddress.details} name="shippingAddress.details" type="text" id="IDDetails" className="w-full border rounded-md p-2" />
       </div>
 
     </div>
